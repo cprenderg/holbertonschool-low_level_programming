@@ -36,12 +36,12 @@ void print_alphabet_x10(void);
 int _islower(int);
 
 /**
- * _isalpha - checks if a character is a letter
+ * _isalpha - checks if c is a letter
  * @c: character to check
  *
  * Return: 1 if letter, 0 if else
  */
-int _isalpha(int);
+int _isalpha(int c);
 
 /**
  * print_sign - checks if n is positive, negative, or zero
@@ -54,11 +54,11 @@ int _isalpha(int);
 int print_sign(int n);
 
 /**
- * _abs - computes absolute value of an integer
+ * _abs - computes absolute value of n
  * @int: integer to check
  *
- * Return: The absolute value of the integer
+ * Return: The absolute value of n
  */
-int _abs(int);
+int _abs(int n);
 
 #endif
