@@ -42,4 +42,15 @@ int _islower(int);
  * Return: 1 if letter, 0 if else
  */
 int _isalpha(int);
+
+/**
+ * print_sign - checks if a number is positive, negative, or zero
+ * @n: integer to check
+ *
+ * Return: 1 and prints + if n is greater than zero
+ * Return: 0 and prints 0 if n is zero
+ * Return: -1 and prints - if n is less than zero
+ */
+int print_sign(int n);
+
 #endif
