@@ -44,7 +44,7 @@ int _islower(int);
 int _isalpha(int);
 
 /**
- * print_sign - checks if a number is positive, negative, or zero
+ * print_sign - checks if n is positive, negative, or zero
  * @n: integer to check
  *
  * Return: 1 and prints + if n is greater than zero
@@ -52,5 +52,13 @@ int _isalpha(int);
  * Return: -1 and prints - if n is less than zero
  */
 int print_sign(int n);
+
+/**
+ * _abs - computes absolute value of an integer
+ * @int: integer to check
+ *
+ * Return: The absolute value of the integer
+ */
+int _abs(int);
 
 #endif
