@@ -10,7 +10,7 @@ int sum_to_n(int n)
         sum += i;
     	i++;
     }
-    return n;
+    return sum;
 }
 
 /* -- DO NOT Modify the code below this line -- */
