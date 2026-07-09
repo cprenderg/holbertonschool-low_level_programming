@@ -93,4 +93,12 @@ void times_table(void);
  * Return: sum of a and b
  */
 int add(int a, int b);
+
+/**
+ * print_to_98 - Prints all integers from n to 98, followed by a new line
+ * @n: starting number
+ *
+ * Return: void
+ */
+void print_to_98(int n);
 #endif
