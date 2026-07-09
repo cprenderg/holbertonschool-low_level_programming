@@ -2,28 +2,40 @@
 /**
  * jack_bauer - prints every minute of the day of Jack Bauer
  *
- * Return: Always 0
+ * Return: void
  */
 void jack_bauer(void)
 {
 	int m = 0;
+	int mt = 0;
 	int h = 0;
+	int ht = 0;
 
-	while (h < 24)
+	while (ht != 2 && h != 4)
 	{
-		if (m == 60)
+		if (m == 10)
 		{
 			m = 0;
-			h++;
-			if (h == 24)
-				break;
-			printf("%02d:%02d\n", h, m);
-			m++;
+			mt++;
+			if (mt == 6)
+			{
+				mt = 0;
+				h++;
+				if (ht == 2 && h == 4)
+					break;
+				if (h == 10)
+				{
+					h = 0;
+					ht++;
+				}
+			}
 		}
-		else
-		{
-			printf("%02d:%02d\n", h, m);
-			m++;
-		}
+		_putchar(ht + 48);
+		_putchar(h + 48);
+		_putchar(':');
+		_putchar(mt + 48);
+		_putchar(m + 48);
+		_putchar('\n');
+		m++;
 	}
 }
