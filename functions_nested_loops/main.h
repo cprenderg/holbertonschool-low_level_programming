@@ -77,4 +77,11 @@ int print_last_digit(int n);
  * Return: Always 0
  */
 void jack_bauer(void);
+
+/**
+ * times_table: prints a times table up to 9
+ *
+ * Return: void
+ */
+void times_table(void);
 #endif
