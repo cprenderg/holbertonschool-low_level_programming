@@ -15,7 +15,9 @@ void times_table(void)
 	{
 		for (j = 0; j <= 9; j++)
 		{
-			if (i * j >= 10)
+			if (j == 0)
+				_putchar(i * j + 48);
+			else if (i * j >= 10)
 			{
 				tens = (((i * j) / 10) + 48);
 				ones = (((i * j) % 10) + 48);
