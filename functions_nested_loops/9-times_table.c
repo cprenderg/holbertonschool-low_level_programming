@@ -23,7 +23,10 @@ void times_table(void)
 				_putchar(ones);
 			}
 			else
+			{
+				_putchar(' ');
 				_putchar(i * j + 48);
+			}
 			if (j == 9)
 				_putchar('\n');
 			else
