@@ -5,7 +5,10 @@
  *
  * Return: the last digit of n
  */
-int print_last_digit(int n);
+int print_last_digit(int n)
 {
-	return (n % 10);
+	if (n % 10 < 0)
+		return (-(n % 10));
+	else
+		return (n % 10);
 }
