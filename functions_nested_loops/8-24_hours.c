@@ -11,7 +11,7 @@ void jack_bauer(void)
 	int h = 0;
 	int ht = 0;
 
-	while (ht != 2 && h != 4)
+	while (1)
 	{
 		if (m == 10)
 		{
