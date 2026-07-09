@@ -24,10 +24,13 @@ void times_table(void)
 			}
 			else
 				_putchar(i * j + 48);
-			_putchar(',');
-			_putchar(' ');
 			if (j == 9)
 				_putchar('\n');
+			else
+			{
+				_putchar(',');
+				_putchar(' ');
+			}
 		}
 	}
 }
