@@ -83,4 +83,19 @@ void print_diagonal(int n);
  */
 void print_square(int size);
 
+/**
+ * fizz_buzz - Prints 1 - 100, multiples of 3 as Fizz, 5 as Buzz, and 3 and 5 as FizzBuzz
+ *
+ * Return: void
+ */
+void fizz_buzz(void);
+
+/**
+ * print_triangle - prints a triangle of size size
+ * @size: size of triangle
+ *
+ * Return: void
+ */
+void print_triangle(int size);
+
 #endif
