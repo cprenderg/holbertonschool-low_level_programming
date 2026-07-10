@@ -67,4 +67,12 @@ void more_numbers(void);
  */
 void print_line(int n);
 
+/**
+ * print_diagonal - prints a diagonal line that is n long
+ * @n: length of diagonal line
+ *
+ * Return: void
+ */
+void print_diagonal(int n);
+
 #endif
