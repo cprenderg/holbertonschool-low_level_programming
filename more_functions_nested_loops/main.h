@@ -59,4 +59,12 @@ void print_most_numbers(void);
  */
 void more_numbers(void);
 
+/**
+ * print_line - prints a line that is n long
+ * @n: length of line
+ *
+ * Return: void
+ */
+void print_line(int n);
+
 #endif
