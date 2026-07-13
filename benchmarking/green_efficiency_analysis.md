@@ -25,7 +25,7 @@ The execution times between between each run of the same program only differed s
 | 1         | 100000000   | 0.088242           |
 | 2         | 100000000   | 0.086297           |
 | 3         | 100000000   | 0.099429           |
-| Average   |             |                    |	
+| Average   | 100000000   | 0.091323           |	
 
 ### Algorithm Comparison
 | Execution Number | Naïve Algorithm Result | Naïve Algorithm Time (s) | Single-pass Algorithm Result | Single-pass Algorithm Time (s) |
