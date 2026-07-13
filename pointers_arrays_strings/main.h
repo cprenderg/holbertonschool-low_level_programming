@@ -20,4 +20,12 @@ void reset_to_98(int *n);
  */
 void swap_int(int *a, int *b);
 
+/**
+ * _strlen - returns the length of string s
+ * @s: string to be calculated
+ *
+ * Return: length of s
+ */
+int _strlen(char *s);
+
 #endif
