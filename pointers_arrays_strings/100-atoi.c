@@ -11,14 +11,20 @@ int _atoi(char *s)
 	int n = 0;
 	int j = 0;
 	int neg = 0;
+	int INT_MAX = 2147483647;
 
 	while (s[i])
 	{
 		if (s[i] >= 48 && s[i] <= 57)
 		{
-			j = s[i] - '0';
-			n = n * 10;
-			n = n + j;
+			if (n > INT_MAX / 10)
+			       break;	
+			else
+			{
+				j = s[i] - '0';
+				n = n * 10;
+				n = n + j;
+			}
 		}
 		else if (s[i] == 45)
 			neg++;
