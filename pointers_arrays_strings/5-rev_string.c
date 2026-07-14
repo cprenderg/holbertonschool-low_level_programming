@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * rev_string - reverses a string max length 100
+ * rev_string - reverses a string max length 1000
  * @s: string to be reversed
  *
  * Return: void
@@ -9,7 +9,7 @@ void rev_string(char *s)
 {
 	int i = 0;
 	int j = 0;
-	char rev[100];
+	char rev[1000];
 
 	while (s[i])
 		i++;
