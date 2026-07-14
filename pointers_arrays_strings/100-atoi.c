@@ -11,7 +11,6 @@ int _atoi(char *s)
 	unsigned int n = 0;
 	int j = 0;
 	int neg = 0;
-	int INT_MAX = 2147483647;
 
 	while (s[i])
 	{
