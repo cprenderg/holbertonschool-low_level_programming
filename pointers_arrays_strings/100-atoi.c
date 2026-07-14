@@ -22,7 +22,7 @@ int _atoi(char *s)
 		}
 		else if (s[i] == 45)
 			neg++;
-		else if (s[i] == 44)
+		else if (n > 0)
 			break;
 		i++;
 	}
