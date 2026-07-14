@@ -8,7 +8,7 @@
 int _atoi(char *s)
 {
 	int i = 0;
-	int n = 0;
+	unsigned int n = 0;
 	int j = 0;
 	int neg = 0;
 	int INT_MAX = 2147483647;
@@ -18,11 +18,6 @@ int _atoi(char *s)
 		if (s[i] >= 48 && s[i] <= 57)
 		{
 			j = s[i] - '0';
-			if (n >= INT_MAX / 10)
-			{
-				if (j > 7)
-					break;
-			}
 			n = n * 10;
 			n = n + j;
 		}
