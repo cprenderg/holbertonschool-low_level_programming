@@ -23,11 +23,8 @@ int _atoi(char *s)
 				if (j > 7)
 					break;
 			}
-			else
-			{
-				n = n * 10;
-				n = n + j;
-			}
+			n = n * 10;
+			n = n + j;
 		}
 		else if (s[i] == 45)
 			neg++;
