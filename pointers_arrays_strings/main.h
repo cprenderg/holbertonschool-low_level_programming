@@ -86,4 +86,13 @@ void puts_half(char *str);
  */
 void print_array(int *a, int n);
 
+/**
+ * _strcpy - copies string src into dest
+ * @dest: pointer to copied string
+ * @src: pointer to original string
+ *
+ * Return: pointer to copied string
+ */
+char *_strcpy(char *dest, char *src);
+
 #endif
