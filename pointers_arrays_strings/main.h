@@ -53,4 +53,12 @@ int _putchar(char c);
  */
 void print_rev(char *s);
 
+/**
+ * rev_string - reverses a string max length 100
+ * @s: string to be reversed
+ *
+ * Return: void
+ */
+void rev_string(char *s);
+
 #endif
