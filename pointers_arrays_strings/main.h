@@ -113,4 +113,14 @@ int _atoi(char *s);
  */
 char *_strcat(char *dest, char *src);
 
+/**
+ * _strncat - concatenates dest and src
+ * @dest: first string
+ * @src: second string
+ * @n: the most bytes usable from src
+ *
+ * Return: concatenated string
+ */
+char *_strncat(char *dest, char *src, int n);
+
 #endif
