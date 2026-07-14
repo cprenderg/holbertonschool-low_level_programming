@@ -44,4 +44,13 @@ void _puts(char *str);
  * One error, -1 is returned, and errno is set appropriately.
  */
 int _putchar(char c);
+
+/**
+ * print_rev - prints string s in reverse
+ * @s: string to be reverse printed
+ *
+ * Return: void
+ */
+void print_rev(char *s);
+
 #endif
