@@ -68,4 +68,13 @@ void rev_string(char *s);
  * Return: void
  */
 void puts2(char *str);
+
+/**
+ * puts_half - prints the last half of a string rounded up
+ * @str: string to be printed
+ *
+ * Return: void
+ */
+void puts_half(char *str);
+
 #endif
