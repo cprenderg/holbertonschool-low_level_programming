@@ -95,4 +95,13 @@ void print_array(int *a, int n);
  */
 char *_strcpy(char *dest, char *src);
 
+#include "main.h"
+/**
+ * _atoi - converts string to an integer
+ * @s: string to be converted
+ *
+ * Return: integer from string
+ */
+int _atoi(char *s);
+
 #endif

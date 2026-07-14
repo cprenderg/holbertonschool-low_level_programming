@@ -1,0 +1,33 @@
+#include "main.h"
+/**
+ * _atoi - converts string to an integer
+ * @s: string to be converted
+ *
+ * Return: integer from string
+ */
+int _atoi(char *s)
+{
+	int i = 0;
+	int n = 0;
+	int j = 0;
+	int neg = 0;
+
+	while (s[i])
+	{
+		if (s[i] >= 48 && s[i] <= 57)
+		{
+			j = s[i] - '0';
+			n = n * 10;
+			n = n + j;
+		}
+		else if (s[i] == 45)
+			neg++;
+		else if (s[i] == 44)
+			break;
+		i++;
+	}
+	if (neg % 2 == 0)
+		return (n);
+	else
+		return (-n);
+}
