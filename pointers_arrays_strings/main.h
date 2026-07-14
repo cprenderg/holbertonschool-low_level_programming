@@ -104,4 +104,13 @@ char *_strcpy(char *dest, char *src);
  */
 int _atoi(char *s);
 
+/**
+ * _strcat - concatenates dest and src
+ * @dest: first string
+ * @src: second string
+ *
+ * Return: concatenated string
+ */
+char *_strcat(char *dest, char *src);
+
 #endif
