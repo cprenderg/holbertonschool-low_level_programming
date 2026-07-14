@@ -123,4 +123,13 @@ char *_strcat(char *dest, char *src);
  */
 char *_strncat(char *dest, char *src, int n);
 
+/**
+ * _strncpy - copies a string src into dest
+ * @dest: where src is copied to
+ * @src: string to be copied
+ * @n: max number of characters
+ *
+ * Return: copied string dest
+ */
+char *_strncpy(char *dest, char *src, int n);
 #endif
