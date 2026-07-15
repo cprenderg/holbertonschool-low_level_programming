@@ -158,4 +158,13 @@ void reverse_array(int *a, int n);
  * Return: string
  */
 char *string_toupper(char *str);
+
+/**
+ * cap_string - captilises the first letter of all words
+ * @str: string to capitilise
+ *
+ * Return: capitlised string
+ */
+char *cap_string(char *str);
+
 #endif
