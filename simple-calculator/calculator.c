@@ -9,7 +9,7 @@ int main()
 	int function;
 	int num1;
 	int num2;
-	int answer;
+	float answer;
 
 	printf("Simple Calculator\n");
 	while (1)
@@ -33,7 +33,7 @@ int main()
 		printf("Please choose your second number:\n");
 		scanf("%d", &num2);
 		answer = num1 + num2;
-		printf("Result: %d\n", answer);
+		printf("Result: %.0f\n", answer);
 	}
 	else if (function == 2)
 	{
@@ -42,7 +42,7 @@ int main()
 		printf("Please choose your second number:\n");
 		scanf("%d", &num2);
 		answer = num1 - num2;
-		printf("Result: %d\n", answer);
+		printf("Result: %.0f\n", answer);
 	}
 	else if (function == 3)
 	{
@@ -51,7 +51,21 @@ int main()
 		printf("Please choose your second number:\n");
 		scanf("%d", &num2);
 		answer = num1 * num2;
-		printf("Result: %d\n", answer);
+		printf("Result: %.0f\n", answer);
+	}
+	else if (function == 4)
+	{
+		printf("Please choose your first number:\n");
+		scanf("%d", &num1);
+		printf("Please choose your second number:\n");
+		scanf("%d", &num2);
+		if (num2 == 0)
+		{
+			printf("Error: division by zero\n");
+			return (0);
+		}
+		answer = (float)num1 / num2;
+		printf("Result: %.1f\n", answer);
 	}
 	return (0);
 }
