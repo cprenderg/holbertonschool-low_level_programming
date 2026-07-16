@@ -6,58 +6,38 @@
  */
 int main()
 {
-	char function;
+	int function;
 	int num1;
 	int num2;
 	int answer;
 
 	printf("Simple Calculator\n");
-	printf("Type one of the following characters to choose an operation:\n");
-	printf("'+' to add\n");
-	printf("'-' to subtract\n");
-	printf("'*' to multiply\n");
-	printf("'/' to divide\n");
-	printf("'0' to quit\n");
-	scanf(" %c", &function);
 
-	printf("You have selected %c\n", function);
-	
-	while (function != 0)
+	while (1)
 	{
-		if (function == '0')
-		{
-			printf("Goodbye!\n");
-			return (0);
-		}
-		else
-		{
-			printf("Please enter your first number:\n");
-			scanf("%d", &num1);
-			printf("You have entered %d\n", num1);
-			printf("Please enter your second number:\n");
-			scanf("%d", &num2);
-			printf("You have entered %d\n", num2);
-		}
-		if (function == '+')
-			answer = num1 + num2;
-		else if (function == '-')
-			answer = num1 - num2;
-		else if (function == '*')
-			answer = num1 * num2;
-		else
-			answer = num1 / num2;
-		printf("%d %c %d = %d\n", num1, function, num2, answer);
-
-		printf("Would you like to do another calculation?\n");
 		printf("Type one of the following characters to choose an operation:\n");
-		printf("'+' to add\n");
-		printf("'-' to subtract\n");
-		printf("'*' to multiply\n");
-		printf("'/' to divide\n");
+		printf("'1' to add\n");
+		printf("'2' to subtract\n");
+		printf("'3' to multiply\n");
+		printf("'4' to divide\n");
 		printf("'0' to quit\n");
-		scanf(" %c", &function);
-		printf("You have selected %c\n", function);
+		scanf("%d", &function);
+		printf("You have selected %d\n", function);
+		if (function >= 0 && function <= 4)
+			break;
+		else
+			printf("Invalid choice\n");
 	}
-	printf("Goodbye!\n");
+
+	if (function == 1)
+	{
+		printf("Please choose your first number:\n");
+		scanf("%d", &num1);
+		printf("Please choose your second number:\n");
+		scanf("%d", &num2);
+		answer = num1 + num2;
+		printf("Result: %d\n", answer);
+	}
+
 	return (0);
 }
