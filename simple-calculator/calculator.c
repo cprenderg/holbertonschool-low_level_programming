@@ -38,6 +38,14 @@ int main()
 		answer = num1 + num2;
 		printf("Result: %d\n", answer);
 	}
-
+	else if (function == 2)
+	{
+		printf("Please choose your first number:\n");
+		scanf("%d", &num1);
+		printf("Please choose your second number:\n");
+		scanf("%d", &num2);
+		answer = num1 - num2;
+		printf("Result: %d\n", answer);
+	}
 	return (0);
 }
