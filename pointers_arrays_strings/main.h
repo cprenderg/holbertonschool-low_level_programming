@@ -221,4 +221,13 @@ unsigned int _strspn(char *s, char *accept);
  * Return: pointer to first matching byte, or null if no match
  */
 char *_strpbrk(char *s, char *accept);
+
+/**
+ * _strstr - locates a substring in haystack
+ * @haystack: string to search in
+ * @needle: substring to find
+ *
+ * Return: pointer to beginning of substring, or NULL
+ */
+char *_strstr(char *haystack, char *needle);
 #endif
