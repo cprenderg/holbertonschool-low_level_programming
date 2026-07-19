@@ -212,4 +212,13 @@ char *_strchr(char *s, char c);
  * Return: number of bytes in the prefix substring of s
  */
 unsigned int _strspn(char *s, char *accept);
+
+/**
+ * _strpbrk - searches a string for any set of bytes
+ * @s: string to search
+ * @accept: characters to search for
+ *
+ * Return: pointer to first matching byte, or null if no match
+ */
+char *_strpbrk(char *s, char *accept);
 #endif
