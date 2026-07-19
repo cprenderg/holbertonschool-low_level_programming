@@ -204,4 +204,12 @@ char *_memcpy(char *dest, char *src, unsigned int n);
  * Return: pointer to first c in s, or NULL if not found
  */
 char *_strchr(char *s, char c);
+/**
+ * _strspn - gets the length of a prefix substring
+ * @s: string to search
+ * @accept: characters to accept
+ *
+ * Return: number of bytes in the prefix substring of s
+ */
+unsigned int _strspn(char *s, char *accept);
 #endif
