@@ -8,7 +8,7 @@
 char *_strdup(char *str)
 {
 	int len;
-	unsigned int i;
+	int i;
 	char *copied_str;
 
 	len = 0;
@@ -16,7 +16,7 @@ char *_strdup(char *str)
 		len++;
 	if (len == 0)
 		return (NULL);
-	copied_str = malloc(size * sizeof(char));
+	copied_str = (char*)malloc(size_t * sizeof(char));
 	if (copied_str == NULL)
 		return (NULL);
 	i = 0;
