@@ -25,3 +25,12 @@ char *_strdup(char *str);
  * Return: pointer to concatenated string, or NULL on failure
  */
 char *str_concat(char *s1, char *s2);
+
+/**
+ * alloc_grid - return a pointer to a 2D array of integers
+ * @width: width of array
+ * @height: height of array
+ *
+ * Return: Grid of width and height, or NULL if width or height is 0
+ */
+int **alloc_grid(int width, int height);
