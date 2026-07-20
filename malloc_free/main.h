@@ -34,3 +34,11 @@ char *str_concat(char *s1, char *s2);
  * Return: Grid of width and height, or NULL if width or height is 0
  */
 int **alloc_grid(int width, int height);
+/**
+ * free_grid - frees a 2D grid
+ * @grid: grid to be freed
+ * @height: height of grid
+ *
+ * Return: void
+ */
+void free_grid(int **grid, int height);
