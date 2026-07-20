@@ -16,3 +16,12 @@ char *create_array(unsigned int size, char c);
  * Return: pointer to copied string, or NULL if str = NULL
  */
 char *_strdup(char *str);
+
+/**
+ * str_concat - concatenates two strings
+ * @s1: first string
+ * @s2: second string
+ *
+ * Return: pointer to concatenated string, or NULL on failure
+ */
+char *str_concat(char *s1, char *s2);
