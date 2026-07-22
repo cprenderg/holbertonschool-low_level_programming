@@ -46,4 +46,13 @@ typedef struct dog dog_t;
  * Return: pointer to struct, or NULL if fails
  */
 dog_t *new_dog(char *name, float age, char *owner);
+
+/**
+ * free_dog - frees dogs
+ * @d: dog to free
+ *
+ * Return: void
+ */
+void free_dog(dog_t *d);
+
 #endif /* DOG_H */
