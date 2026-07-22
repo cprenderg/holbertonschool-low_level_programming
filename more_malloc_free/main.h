@@ -17,3 +17,12 @@ void *malloc_checked(unsigned int b);
  * Return: pointer to concatenated string, or NULL on fail
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n);
+
+/**
+ * _calloc - allocated memory for an array set to zero, using malloc
+ * @nmemb: size of array
+ * @size: size of space for each integer
+ *
+ * Return: pointer to allocated memory, or NULL if fail
+ */
+void *_calloc(unsigned int nmemb, unsigned int size);
