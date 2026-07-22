@@ -7,3 +7,13 @@
  * Return: pointer to allocated memory
  */
 void *malloc_checked(unsigned int b);
+
+/**
+ * string_nconcat - concatenates two strings
+ * @s1: first string
+ * @s2: second string
+ * @n: amount of s2 to concatenate
+ *
+ * Return: pointer to concatenated string, or NULL on fail
+ */
+char *string_nconcat(char *s1, char *s2, unsigned int n);
