@@ -35,3 +35,13 @@ void *_calloc(unsigned int nmemb, unsigned int size);
  * Return: pointer to the new array
  */
 int *array_range(int min, int max);
+
+/**
+ * _realloc - reallocates a memory block
+ * @ptr: pointer to previosly allocated memory
+ * @old_size: size, in bytes, of the allocated space for ptr
+ * @new_size: new size, in bytes for memory block
+ *
+ * Return: pointer to new memory allocation, or NULL is new_size is zero
+ */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
