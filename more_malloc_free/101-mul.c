@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 int is_num(char *a);
 int to_num(char *str);
