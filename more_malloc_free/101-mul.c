@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		len1 = _strlen(argv[1]);
 		len2 = _strlen(argv[2]);
 		arr_len = len1 + len2;
-		int_array = malloc((arr_len + 1) * sizeof(int));
+		int_array = _calloc((arr_len + 1), sizeof(int));
 		if (int_array == NULL)
 		{
 			free(int_array);
@@ -41,6 +41,12 @@ int main(int argc, char *argv[])
 		}
 		long_mul(argv[1], argv[2], len1, len2, int_array);
 		ans_array = _calloc((arr_len + 1), (arr_len + 1));
+		if (ans_array == NULL)
+		{
+			free(ans_array);
+			printf("Error\n");
+			exit(98);
+		}
 		to_str(int_array, ans_array, arr_len);
 		free(int_array);
 		{
@@ -149,13 +155,21 @@ void to_str(int *src, char *dest, unsigned int len)
 	{
 		i++;
 	}
-	while (i < len)
+	if (i == len)
 	{
-		dest[j] = src[i] + '0';
-		i++;
-		j++;
+		dest[0] = '0';
+		dest[1] = '\0';
 	}
-	dest[j] = '\0';
+	else
+	{
+		while (i < len)
+		{
+			dest[j] = src[i] + '0';
+			i++;
+			j++;
+		}
+		dest[j] = '\0';
+	}
 }
 /**
  * _calloc - allocated memory for an array set to zero, using malloc
