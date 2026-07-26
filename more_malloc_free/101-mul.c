@@ -3,8 +3,9 @@
 int is_num(char *a);
 int to_num(char *str);
 int _strlen(char *str);
-void to_str(int *src, char *dest, int len);
-void long_mul(char *num1, char *num2, int len1, int len2, int *dest);
+void to_str(int *src, char *dest, unsigned int len);
+void long_mul(char *num1, char *num2, unsigned int len1,
+		unsigned int len2, int *dest);
 void *_calloc(unsigned int nmemb, unsigned int size);
 /**
  * main - prints the product of two positive numbers
@@ -17,9 +18,9 @@ int main(int argc, char *argv[])
 {
 	int *int_array;
 	char *ans_array;
-	int len1;
-	int len2;
-	int arr_len;
+	unsigned int len1;
+	unsigned int len2;
+	unsigned int arr_len;
 
 	if (argc == 3)
 	{
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
 		len1 = _strlen(argv[1]);
 		len2 = _strlen(argv[2]);
 		arr_len = len1 + len2;
-		int_array = malloc((arr_len + 1) * sizeof(char));
+		int_array = malloc((arr_len + 1) * sizeof(int));
 		if (int_array == NULL)
 		{
 			free(int_array);
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		long_mul(argv[1], argv[2], len1, len2, int_array);
-		ans_array = _calloc((unsigned int)(arr_len + 1), (unsigned int)(arr_len + 1));
+		ans_array = _calloc((arr_len + 1), (arr_len + 1));
 		to_str(int_array, ans_array, arr_len);
 		free(int_array);
 		{
@@ -102,7 +103,8 @@ int _strlen(char *str)
  *
  * Return: void
  */
-void long_mul(char *num1, char *num2, int len1, int len2, int *dest)
+void long_mul(char *num1, char *num2,
+		unsigned int len1, unsigned int len2, int *dest)
 {
 	int i;
 	int j;
@@ -136,9 +138,9 @@ void long_mul(char *num1, char *num2, int len1, int len2, int *dest)
  *
  * Return: void
  */
-void to_str(int *src, char *dest, int len)
+void to_str(int *src, char *dest, unsigned int len)
 {
-	int i;
+	unsigned int i;
 	int j;
 
 	i = 0;
