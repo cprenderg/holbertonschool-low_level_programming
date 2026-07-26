@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
 		int_array = _calloc((arr_len + 1), sizeof(int));
 		if (int_array == NULL)
 		{
-			free(int_array);
 			printf("Error\n");
 			exit(98);
 		}
@@ -43,7 +42,7 @@ int main(int argc, char *argv[])
 		ans_array = _calloc((arr_len + 1), (arr_len + 1));
 		if (ans_array == NULL)
 		{
-			free(ans_array);
+			free(int_array);
 			printf("Error\n");
 			exit(98);
 		}
