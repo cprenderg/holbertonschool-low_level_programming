@@ -49,10 +49,9 @@ int main(int argc, char *argv[])
 		}
 		to_str(int_array, ans_array, arr_len);
 		free(int_array);
-		{
-			printf("%s\n", ans_array);
-			return (0);
-		}
+		printf("%s\n", ans_array);
+		free(ans_array);
+		return (0);
 	}
 	else
 	{
