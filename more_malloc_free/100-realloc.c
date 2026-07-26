@@ -1,4 +1,5 @@
 #include "main.h"
+void copy_memory(char *dest, char *src, unsigned int size);
 /**
  * _realloc - reallocates a memory block
  * @ptr: pointer to previosly allocated memory
@@ -17,33 +18,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	old = ptr;
 	i = 0;
 	if (new_size == old_size)
-	{
 		return (ptr);
-	}
 	else if (ptr == NULL)
 	{
 		new_ptr = malloc(new_size);
 		if (new_ptr == NULL)
-		{
 			return (NULL);
-		}
-		new = new_ptr;
-		return (new_ptr);
-	}
-	else if (new_size > old_size)
-	{
-		new_ptr = malloc(new_size);
-		if (new_ptr == NULL)
-		{
-			return (NULL);
-		}
-		new = new_ptr;
-		while (i < old_size)
-		{
-			new[i] = old[i];
-			i++;
-		}
-		free(ptr);
 		return (new_ptr);
 	}
 	else if (new_size == 0)
@@ -51,22 +31,35 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		free(ptr);
 		return (NULL);
 	}
-	else if (new_size < old_size)
+	else
 	{
 		new_ptr = malloc(new_size);
 		if (new_ptr == NULL)
 			return (NULL);
-		new = new_ptr;
-		while (i < new_size)
-		{
-			new[i] = old[i];
-			i++;
-		}
+		if (new_size > old_size)
+			copy_memory(new_ptr, old, old_size);
+		if (new_size < old_size)
+			copy_memory(new_ptr, old, new_size);
 		free(ptr);
 		return (new_ptr);
 	}
-	else
+}
+/**
+ * copy_memory - copies one array to another
+ * @dest: new array
+ * @src: source array
+ * @size: size of new array
+ *
+ * Return: void
+ */
+void copy_memory(char *dest, char *src, unsigned int size)
+{
+	unsigned int i;
+
+	i = 0;
+	while (i < size)
 	{
-		return (NULL);
+		dest[i] = src[i];
+		i++
 	}
 }
