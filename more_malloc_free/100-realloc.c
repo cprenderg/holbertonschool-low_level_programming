@@ -10,13 +10,10 @@ void copy_memory(char *dest, char *src, unsigned int size);
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
 	void *new_ptr;
-	char *new;
 	char *old;
 
 	old = ptr;
-	i = 0;
 	if (new_size == old_size)
 		return (ptr);
 	else if (ptr == NULL)
@@ -60,6 +57,6 @@ void copy_memory(char *dest, char *src, unsigned int size)
 	while (i < size)
 	{
 		dest[i] = src[i];
-		i++
+		i++;
 	}
 }
