@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		long_mul(argv[1], argv[2], len1, len2, int_array);
-		ans_array = _calloc((arr_len + 1), (arr_len + 1));
+		ans_array = _calloc((arr_len + 1), sizeof(char));
 		if (ans_array == NULL)
 		{
 			free(int_array);
