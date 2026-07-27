@@ -14,15 +14,15 @@ int main(int argc, char *argv[])
 		int a;
 		int answer;
 		
-		if (*argv[2] != '+' || *argv[2] != '-' ||
-				*argv[2] != '*' || *argv[2] != '/' || *argv[2] != '%')
+		if (*argv[2] != '+' && *argv[2] != '-' &&
+				*argv[2] != '*' && *argv[2] != '/' && *argv[2] != '%')
 		{
-			printf("ERROR\n");
+			printf("ERROR99\n");
 			return (99);
 		}
 		if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == 0)
 		{
-			printf("ERROR\n");
+			printf("ERROR100\n");
 			return (100);
 		}
 		a = atoi(argv[1]);
