@@ -10,4 +10,13 @@
  * Return: sum of parameters
  */
 int sum_them_all(const unsigned int n, ...);
+
+/**
+ * print_numbers - prints all n separated by separator
+ * @separator: characters to separate numbers with
+ * @n: amount numbers to print
+ *
+ * Return: void
+ */
+void print_numbers(const char *separator, const unsigned int n, ...);
 #endif
