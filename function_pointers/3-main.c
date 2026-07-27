@@ -14,6 +14,17 @@ int main(int argc, char *argv[])
 		int a;
 		int answer;
 		
+		if (*argv[2] != '+' || *argv[2] != '-' ||
+				*argv[2] != '*' || *argv[2] != '/' || *argv[2] != '%')
+		{
+			printf("ERROR\n");
+			return (99);
+		}
+		if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == 0)
+		{
+			printf("ERROR\n");
+			return (100);
+		}
 		a = atoi(argv[1]);
 		b = atoi(argv[3]);
 		answer = get_op_func(argv[2])(a, b);
@@ -21,5 +32,8 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	else
-		return (0);
+	{
+		printf("ERROR\n");
+		return (98);
+	}
 }
