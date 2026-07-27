@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
 		if (*argv[2] != '+' && *argv[2] != '-' &&
 				*argv[2] != '*' && *argv[2] != '/' && *argv[2] != '%')
 		{
-			printf("ERROR\n");
+			printf("Error\n");
 			return (99);
 		}
 		if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == 0)
 		{
-			printf("ERROR\n");
+			printf("Error\n");
 			return (100);
 		}
 		a = atoi(argv[1]);
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		return (98);
 	}
 }
