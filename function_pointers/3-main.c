@@ -1,8 +1,8 @@
 #include "3-calc.h"
 /**
  * main - calculator
- * @a: first integer
- * @b: second integer
+ * @argc: amount of arguments
+ * @argv: each argument
  *
  * Return: 0 if worked successfully
  */
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 		int b;
 		int a;
 		int answer;
-		
+
 		if ((*argv[2] != '+' && *argv[2] != '-' &&
 				*argv[2] != '*' && *argv[2] != '/' && *argv[2] != '%')
 				|| argv[2][1] != '\0')
