@@ -13,12 +13,6 @@ typedef struct op
 	char *op;
 	int (*f)(int a, int b);
 } op_t;
-/**
- * get_op_func - gets the correct function for the calculator
- * @s: character of function
- *
- * Return: pointer to function that corresponds to operator
- */
 int (*get_op_func(char *s))(int, int);
 /**
  * op_add - returns the sum of a and b
