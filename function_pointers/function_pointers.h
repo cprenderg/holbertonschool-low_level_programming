@@ -20,4 +20,14 @@ void print_name(char *name, void (*f)(char *));
  * Return: void
  */
 void array_iterator(int *array, size_t size, void (*action)(int));
+
+/**
+ * int_index - searches for an integer
+ * @array: array to search in
+ * @size: size of array
+ * @cmp: function used to compare value
+ *
+ * Return: index of the first occurance, or -1 if no matches
+ */
+int int_index(int *array, int size, int (*cmp)(int));
 #endif
