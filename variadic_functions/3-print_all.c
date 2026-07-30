@@ -11,13 +11,9 @@ void print_all(const char * const format, ...)
 	va_list ap;
 	int i;
 
-	if (format == NULL)
-	{
-		return;
-	}
 	i = 0;
 	va_start(ap, format);
-	while (format[i])
+	while (format != NULL && format[i])
 	{
 		if (format[i] == 'c' || format[i] == 'i' ||
 				format[i] == 'f' || format[i] == 's')
