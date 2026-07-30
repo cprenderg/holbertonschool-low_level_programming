@@ -1,4 +1,5 @@
 #include "variadic_functions.h"
+void print_type(char type, va_list ap);
 /**
  * print_all - prints anything
  * @format: list of argument types passed to function
@@ -8,43 +9,50 @@
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	const char *type;
 	int i;
-	int len;
-	int valid;
 
-	len = 0;
 	i = 0;
-	type = format;
-	while (type[len] != '\0')
-		len++;
 	va_start(ap, format);
-	while (i < len)
+	while (format[i])
 	{
-		valid = 1;
-		switch (type[i])
+		if (format[i] == 'c' || format[i] == 'i' ||
+				format[i] == 'f' || format[i] == 's')
 		{
-			case 'c':
-				printf("%c", va_arg(ap, int));
-				break;
-			case 'i':
-				printf("%d", va_arg(ap, int));
-				break;
-			case 'f':
-				printf("%f", va_arg(ap, double));
-				break;
-			case 's':
-				printf("%s", va_arg(ap, char *));
-				break;
-			default:
-				valid = 0;
-				break;
+			print_type(format[i], ap);
+			if (format[i + 1])
+			{
+				printf(", ");
+			}
 		}
 		i++;
-		if (i == len)
-			break;
-		if (valid)
-			printf(", ");
 	}
 	printf("\n");
+}
+/**
+ * print_type - prints the variable ap of type
+ * @type: character that represents the type of ap
+ * @ap: variable to print
+ *
+ * Return: void
+ */
+void print_type(char type, va_list ap)
+{
+	char *str;
+
+	switch (type)
+	{
+		case 'c':
+			printf("%c", va_arg(ap, int));
+			break;
+		case 'i':
+			printf("%d", va_arg(ap, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(ap, double));
+			break;
+		case 's':
+			str = va_arg(ap, char *);
+			printf("%s", str == NULL ? "(nil)" : str);
+			break;
+	}
 }
