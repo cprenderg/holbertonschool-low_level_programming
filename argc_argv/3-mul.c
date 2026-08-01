@@ -1,4 +1,5 @@
 #include <stdio.h>
+int string_to_num(char *str);
 /**
  * main - multiplies 2 numbers
  * @argc: amount of arguments
@@ -10,52 +11,12 @@ int main(int argc, char *argv[])
 {
 	if (argc == 3)
 	{
-		int i;
 		int num1;
 		int num2;
 		int ans;
-		int neg;
 
-		i = 0;
-		num1 = 0;
-		num2 = 0;
-		neg = 0;
-		while (argv[1][i] != '\0')
-		{
-			if (argv[1][i] == '-')
-			{
-				neg = 1;
-				i++;
-			}
-			else
-			{
-				num1 = num1 * 10;
-				num1 += argv[1][i] - '0';
-				i++;
-			}
-		}
-		if (neg)
-		{
-			num1 *= -1;
-			neg = 0;
-		}
-		i = 0;
-		while (argv[2][i] != '\0')
-			if (argv[2][i] == '-')
-			{
-				neg = 1;
-				i++;
-			}
-			else
-			{
-				num2 = num2 * 10;
-				num2 += argv[2][i] - '0';
-				i++;
-			}
-		if (neg)
-		{
-			num1 *= -1;
-		}
+		num1 = string_to_num(argv[1]);
+		num2 = string_to_num(argv[2]);
 		ans = num1 * num2;
 		printf("%d\n", ans);
 		return (0);
@@ -65,4 +26,39 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
+}
+/**
+ * string_to_num - converts string to a integer
+ * @str: string to convert
+ *
+ * Return: integer converted from string
+ */
+int string_to_num(char *str)
+{
+	int i;
+	int neg;
+	int num;
+
+	i = 0;
+	neg = 0;
+	num = 0;
+	while (str[i])
+	{
+		if (str[i] == '-')
+		{
+			neg = 1;
+			i++;
+		}
+		else
+		{
+			num = num * 10;
+			num += str[i] - '0';
+			i++;
+		}
+	}
+	if (neg)
+	{
+		num *= -1;
+	}
+	return (num);
 }
