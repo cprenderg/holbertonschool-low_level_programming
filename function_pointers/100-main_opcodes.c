@@ -30,7 +30,11 @@ int main(int argc, char *argv[])
 		ptr = (unsigned char *)main;
 		while (i < bytes)
 		{
-			printf("%02x ", ptr[i]);
+			printf("%02x", ptr[i]);
+			if (ptr[i + 1])
+			{
+				printf(" ");
+			}
 			i++;
 		}
 		printf("\n");
