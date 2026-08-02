@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		while (i < bytes)
 		{
 			printf("%02x", ptr[i]);
-			if (ptr[i + 1])
+			if (i != bytes - 1)
 			{
 				printf(" ");
 			}
