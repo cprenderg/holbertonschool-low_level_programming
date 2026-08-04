@@ -8,7 +8,7 @@
 size_t print_list(const list_t *h)
 {
 	const list_t *current_list;
-	long unsigned int elements;
+	unsigned long int elements;
 
 	current_list = h;
 	elements = 0;
@@ -20,7 +20,7 @@ size_t print_list(const list_t *h)
 		}
 		else
 		{
-			printf("[%d] [%s]\n", current_list->len, current_list->str);
+			printf("[%d] %s\n", current_list->len, current_list->str);
 		}
 		current_list = current_list->next;
 		elements++;
