@@ -18,6 +18,10 @@ list_t *add_node(list_t **head, const char *str)
 		return (NULL);
 	}
 	new_str = strdup(str);
+	if (new_str == NULL)
+	{
+		return (NULL);
+	}
 	str_len = 0;
 	while (new_str[str_len])
 	{
