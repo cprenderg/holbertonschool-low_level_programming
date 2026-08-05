@@ -1,6 +1,6 @@
 # Step-by-Step Memory Map
 # 0. Ai Memory Visualiser
-Text that has a strikethrough is where I have edited AI the AI's response. Text in italics has been added to the AI's response.
+Text that has a ~~strikethrough~~ is where I have edited AI the AI's response. Text in *italics* has been added to the AI's response.
 
 ## Step 1 – `main()` begins
 
@@ -192,7 +192,7 @@ b ─┘
 ### Object Lifetimes
 
 - Heap array: **Alive**
-*
+
 ---
 ## Step 7 – `printf("%d, %d", a[2], b[2])`
 
@@ -200,8 +200,8 @@ b ─┘
 a[2] = 22 
 b[2] = 22 
 ```
+*Note: Step 7 was not in the AI response*
 --- 
-*
 
 ## Step *8* – `free(a)`
 
@@ -227,7 +227,7 @@ b ───► 0x1000
 | Pointer | Status |
 |---------|--------|
 | `a` | Dangling |
-| `b` | Dangling (alias) |
+| `b` | Dangling ~~(alias)~~ |
 
 ### Object Lifetimes
 
@@ -235,15 +235,15 @@ b ───► 0x1000
 
 ---
 
-*## Step 9 – `printf("%p", (void *)b`
+## *Step 9* – `printf("%p", (void *)b`
 ```
 text b = 0x1000 
 ```
 This step is fine because it is printing the pointer value, not accessing the memory.
 ---
 
-~ ## Step 8 – `b[2]` ~
-* ## Step 10 – `printf("%d", b[2])` *
+## ~~Step 8~~ – `b[2]`
+## Step 10 – `printf("%d", b[2])`
 
 ### Stack Frames and Local Variables
 
@@ -267,20 +267,17 @@ b ───► 0x1000
 |---------|--------|
 | `b` | Dangling |~~
 
-*
 | Pointer | Status |
 |---------|--------|
 | `a` | Dangling |
-| `b` | Dangling |
-*
-
+| `b` | *Dangling* |
 
 ### Object Lifetimes
 
 - Heap array: **Destroyed**
-~~- Invalid read (use-after-free)~~
-- Use-after-free error
-  - Program tries to access data in b[2], but the memory it was pointing at has been freed
+- ~~Invalid read (use-after-free)~~
+- *Use-after-free error*
+  - *Program tries to access data in b[2], but the memory it was pointing at has been freed*
 
 ---
 
@@ -308,21 +305,17 @@ b ───► 0x1000
 |---------|--------|
 | `b` | Dangling |~~
 
-*
 | Pointer | Status |
 |---------|--------|
-| `a` | Dangling |
+| `a` | *Dangling* |
 | `b` | Dangling |
-*
 
 ### Object Lifetimes
 
 - Heap array: **Destroyed**
-~~- Invalid write (use-after-free)~~
-*
+- ~~Invalid write (use-after-free)~~
 - Use-after-free error
-  - Program tries to write to b[3], but the memory b is pointer at his been freed
-*
+  - *Program tries to write to b[3], but the memory b is pointer at his been freed*
 
 ---
 
@@ -360,9 +353,7 @@ None
 | After return | Heap | `NULL` | Alive |
 | After `b = a` | Heap | Heap | Alive |
 | After `free(a)` | Dangling | Dangling | Destroyed |
-| `b[2]` | Dangling | Dangling | ❌ Invalid Read |
+| `printf("%d", b[2])` | Dangling | Dangling | ❌ Invalid Read |
 | `b[3] = 1234` | Dangling | Dangling | ❌ Invalid Write |
 
 ---
-
-
