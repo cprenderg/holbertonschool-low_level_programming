@@ -114,36 +114,36 @@ Segmentation fault (core dumped)
 
 ### Analysis - 6 bytes in 1 blocks are definitely lost in loss record 1 of 1
 
-==643== HEAP SUMMARY:
-==724==     in use at exit: 6 bytes in 1 blocks
-==724==   total heap usage: 5 allocs, 4 frees, 1,066 bytes allocated
-==724== 
-==724== 6 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==724==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==724==    by 0x109211: person_new (heap_example.c:21)
-==724==    by 0x1092FA: main (heap_example.c:51)
+==643== HEAP SUMMARY:  
+==724==     in use at exit: 6 bytes in 1 blocks  
+==724==   total heap usage: 5 allocs, 4 frees, 1,066 bytes allocated  
+==724==   
+==724== 6 bytes in 1 blocks are definitely lost in loss record 1 of 1  
+==724==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)  
+==724==    by 0x109211: person_new (heap_example.c:21)  
+==724==    by 0x1092FA: main (heap_example.c:51)  
 
 The pointer to the structure person for Alice is free, but the string inside the structure it not freed. This means there is a memory leak, as some data stored in the heap was not freed. Valgrind reports this as "6 bytes… definitely lost". The culprit of this leak is the `Person` structure. Within the `Person` structure there is a field called name with the type char *. To make space for this field, memory is allocated in the heap using malloc (Step 2). At the end of the program the function `person_free_partial(alice)` is called (Step 7), that only frees the pointer to alice's Person structure, but leaves alice's name still in the heap. Each character is 1 byte of memory, and alice's name is stored as the string `Alice\0`, which is 6 bytes total. Therefore, Valgrind reports a leak of 6 bytes lost.
 
 ### Full Valgrind report
 
-==724== HEAP SUMMARY:
-==724==     in use at exit: 6 bytes in 1 blocks
-==724==   total heap usage: 5 allocs, 4 frees, 1,066 bytes allocated
-==724== 
-==724== 6 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==724==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==724==    by 0x109211: person_new (heap_example.c:21)
-==724==    by 0x1092FA: main (heap_example.c:51)
-==724== 
-==724== LEAK SUMMARY:
-==724==    definitely lost: 6 bytes in 1 blocks
-==724==    indirectly lost: 0 bytes in 0 blocks
-==724==      possibly lost: 0 bytes in 0 blocks
-==724==    still reachable: 0 bytes in 0 blocks
-==724==         suppressed: 0 bytes in 0 blocks
-==724== 
-==724== For lists of detected and suppressed errors, rerun with: -s
-==724== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==724== HEAP SUMMARY:  
+==724==     in use at exit: 6 bytes in 1 blocks  
+==724==   total heap usage: 5 allocs, 4 frees, 1,066 bytes allocated  
+==724==   
+==724== 6 bytes in 1 blocks are definitely lost in loss record 1 of 1  
+==724==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)  
+==724==    by 0x109211: person_new (heap_example.c:21)  
+==724==    by 0x1092FA: main (heap_example.c:51)  
+==724==   
+==724== LEAK SUMMARY:  
+==724==    definitely lost: 6 bytes in 1 blocks  
+==724==    indirectly lost: 0 bytes in 0 blocks  
+==724==      possibly lost: 0 bytes in 0 blocks  
+==724==    still reachable: 0 bytes in 0 blocks  
+==724==         suppressed: 0 bytes in 0 blocks  
+==724==   
+==724== For lists of detected and suppressed errors, rerun with: -s  
+==724== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)  
 
 ---
