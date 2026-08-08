@@ -844,3 +844,386 @@ None
 | Program exits | — | — | **Alice name still allocated (memory leak)** |
 
 ---
+
+# stack_example.c
+
+## Step 1 – `main()` begins
+
+### Stack Frames and Local Variables
+
+```text
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `main()` frame: **Alive**
+- Heap objects: **None**
+
+---
+
+## Step 2 – `walk_stack(0, 3)` is called
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=0)
+├── depth = 0
+├── max_depth = 3
+└── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `main()` frame: **Alive**
+- `walk_stack(depth=0)` frame: **Alive**
+
+---
+
+## Step 3 – `dump_frame("enter", 0)` is called
+
+### Stack Frames and Local Variables
+
+```text
+dump_frame(depth=0)
+├── label = "enter"
+├── depth = 0
+├── local_int = 100
+├── local_buf = "A"
+└── p_local ───► local_int
+
+walk_stack(depth=0)
+├── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+| Pointer | Points To |
+|---------|-----------|
+| `p_local` | `local_int` |
+
+### Object Lifetimes
+
+- `dump_frame(depth=0)` frame: **Alive**
+- `walk_stack(depth=0)` frame: **Alive**
+- `local_int`, `local_buf`, and `p_local`: **Alive**
+
+---
+
+## Step 4 – `dump_frame()` returns
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=0)
+├── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `dump_frame(depth=0)` frame: **Lifetime ended**
+- `local_int`, `local_buf`, and `p_local`: **Lifetime ended**
+- `walk_stack(depth=0)` frame: **Alive**
+
+---
+
+## Step 5 – `walk_stack(1, 3)` is called
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=1)
+├── depth = 1
+├── max_depth = 3
+└── marker = 10
+
+walk_stack(depth=0)
+├── depth = 0
+├── max_depth = 3
+└── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `walk_stack(depth=0)` frame: **Alive**
+- `walk_stack(depth=1)` frame: **Alive**
+
+---
+
+## Step 6 – `walk_stack(2, 3)` is called
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=2)
+├── depth = 2
+├── max_depth = 3
+└── marker = 20
+
+walk_stack(depth=1)
+├── depth = 1
+├── max_depth = 3
+└── marker = 10
+
+walk_stack(depth=0)
+├── depth = 0
+├── max_depth = 3
+└── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `walk_stack(depth=0)` frame: **Alive**
+- `walk_stack(depth=1)` frame: **Alive**
+- `walk_stack(depth=2)` frame: **Alive**
+
+---
+
+## Step 7 – `walk_stack(3, 3)` is called
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=3)
+├── depth = 3
+├── max_depth = 3
+└── marker = 30
+
+walk_stack(depth=2)
+├── depth = 2
+├── max_depth = 3
+└── marker = 20
+
+walk_stack(depth=1)
+├── depth = 1
+├── max_depth = 3
+└── marker = 10
+
+walk_stack(depth=0)
+├── depth = 0
+├── max_depth = 3
+└── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- All four `walk_stack()` frames: **Alive**
+- `main()` frame: **Alive**
+
+---
+
+## Step 8 – `walk_stack(3)` finishes
+
+At `depth = 3`, this condition is false:
+
+```c
+if (depth < max_depth)
+```
+
+So no further recursive call is made.
+
+After `dump_frame("exit", 3)`, the function returns.
+
+### Stack Frames and Local Variables
+
+```text
+walk_stack(depth=2)
+├── depth = 2
+├── max_depth = 3
+└── marker = 20
+
+walk_stack(depth=1)
+├── depth = 1
+├── max_depth = 3
+└── marker = 10
+
+walk_stack(depth=0)
+├── depth = 0
+├── max_depth = 3
+└── marker = 0
+
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `walk_stack(depth=3)` frame: **Lifetime ended**
+- `walk_stack(depth=0–2)` frames: **Alive**
+
+---
+
+## Step 9 – Remaining recursive calls return
+
+The recursion unwinds from depth 2 back to depth 0.
+
+### Stack Frames and Local Variables
+
+```text
+main()
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `walk_stack(depth=3)` frame: **Lifetime ended**
+- `walk_stack(depth=2)` frame: **Lifetime ended**
+- `walk_stack(depth=1)` frame: **Lifetime ended**
+- `walk_stack(depth=0)` frame: **Lifetime ended**
+- `main()` frame: **Alive**
+
+---
+
+## Step 10 – Program exits
+
+### Stack Frames and Local Variables
+
+```text
+All stack frames have ended.
+```
+
+### Heap Allocations
+
+```text
+None
+```
+
+### Pointer Values and Aliases
+
+```text
+None
+```
+
+### Object Lifetimes
+
+- `main()` frame: **Lifetime ended**
+- All `walk_stack()` frames: **Lifetime ended**
+- All `dump_frame()` frames: **Lifetime ended**
+- Heap objects: **None**
+
+## Timeline Summary
+
+| Step | Active Stack Frames | Heap Objects |
+|------|---------------------|--------------|
+| Program starts | `main()` | None |
+| `walk_stack(0)` | `main()`, `walk_stack(0)` | None |
+| `dump_frame(enter, 0)` | `main()`, `walk_stack(0)`, `dump_frame(0)` | None |
+| `dump_frame(0)` returns | `main()`, `walk_stack(0)` | None |
+| `walk_stack(1)` | `main()`, `walk_stack(0)`, `walk_stack(1)` | None |
+| `walk_stack(2)` | `main()`, `walk_stack(0)`, `walk_stack(1)`, `walk_stack(2)` | None |
+| `walk_stack(3)` | `main()`, `walk_stack(0)`, `walk_stack(1)`, `walk_stack(2)`, `walk_stack(3)` | None |
+| `walk_stack(3)` returns | `main()`, `walk_stack(0)`, `walk_stack(1)`, `walk_stack(2)` | None |
+| Recursion unwinds | `main()` | None |
+| Program exits | None | None |
