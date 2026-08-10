@@ -19,6 +19,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 		free(new_hash);
 		return (NULL);
 	}
+	new_hash->size = size;
 	i = 0;
 	while (i < size)
 	{
