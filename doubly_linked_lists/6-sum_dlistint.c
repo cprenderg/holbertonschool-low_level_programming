@@ -10,9 +10,13 @@ int sum_dlistint(dlistint_t *head)
 	int sum;
 	dlistint_t *next_node;
 
-	if (head->next == NULL)
+	if (head == NULL)
 	{
 		return (0);
+	}
+	else if (head->next == NULL)
+	{
+		return (head->n);
 	}
 	else
 	{
