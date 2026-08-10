@@ -11,26 +11,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	char *str;
 	hash_node_t *new_node;
-	int strlen;
-	int i;
 	int index;
 
 	if (ht == NULL)
 		return (0);
-	i = 0;
-	strlen = 0;
-	while (value[strlen] != '\0')
-	{
-		strlen++;
-	}
-	str = malloc(sizeof(char) * strlen);
-	if (str == NULL)
-		return (0);
-	while (i <= strlen)
-	{
-		str[i] = value[i];
-		i++;
-	}
+	str = strdup(value);
 	new_node = malloc(sizeof(*new_node));
 	if (new_node == NULL)
 	{
