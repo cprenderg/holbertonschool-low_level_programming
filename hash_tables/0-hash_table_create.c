@@ -8,15 +8,22 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *new_hash;
+	unsigned long int i;
 
 	new_hash = malloc(sizeof(*new_hash));
 	if (new_hash == NULL)
 		return (NULL);
-	new_hash->array = malloc(sizeof(long int) * size);
+	new_hash->array = malloc(sizeof(*(new_hash->array)) * size);
 	if (new_hash->array == NULL)
 	{
 		free(new_hash);
 		return (NULL);
+	}
+	i = 0;
+	while (i < size)
+	{
+		new_hash->array[i] = NULL;
+		i++;
 	}
 	return (new_hash);
 }
