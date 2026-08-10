@@ -23,19 +23,19 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	index = (hash_djb2((const unsigned char *)key) % ht->size);
-	if (ht->array[index] != NULL)
-	{
-		new_node->next = ht->array[index];
-	}
-	else
-	{
-		new_node->next = NULL;
-	}
-	ht->array[index] = new_node;
-	new_node->value = str;
 	if (new_node->key != strdup(key))
 	{
 		new_node->key = strdup(key);
-	}
+		if (ht->array[index] != NULL)
+		{
+			new_node->next = ht->array[index];
+		}
+		else
+		{
+			new_node->next = NULL;
+		}
+	}	
+	ht->array[index] = new_node;
+	new_node->value = str;
 	return (1);
 }
