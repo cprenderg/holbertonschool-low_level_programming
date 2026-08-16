@@ -84,8 +84,9 @@ int store_delete(store_t *st, const char *id, session_t **out)
 
 			if (out)
 				*out = cur->sess;
-			/* had to free the session cur was poiting to */
-			session_destroy(cur->sess);
+			else
+				/* had to free the session cur was poiting to */
+				session_destroy(cur->sess);
 			free(cur);
 			return 1;
 		}
