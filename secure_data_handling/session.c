@@ -56,16 +56,10 @@ int session_set_data(session_t *s, const unsigned char *data, size_t data_len)
 	tmp = (unsigned char *)realloc(s->data, data_len);
 	if (tmp == NULL)
 		{
-			free(s->id);
-			free(s->data);
-			free(s);
-			s = NULL;
-			return (1);
+			return (0);
 		}
 
 	s->data = tmp;
-	/* When program exits tmp is a dangling pointer so had to set it to null */
-	tmp = NULL;
 
 	if (!s->data) {
 		s->data_len = 0;
