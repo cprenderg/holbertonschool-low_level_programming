@@ -2,6 +2,35 @@
 #include <fcntl.h>
 #include <unistd.h>
 /**
+ * copy_file - copies contents from one file descriptor to another
+ * @fd_from: source file descriptor
+ * @fd_to: destination file descriptor
+ *
+ * Return: 0 on success, -1 on failure
+ */
+static int copy_file(int fd_from, int fd_to)
+{
+	char buffer[1024];
+	ssize_t bytes_read, bytes_written;
+
+	bytes_read = read(fd_from, buffer, 1024);
+	while (bytes_read > 0)
+	{
+		bytes_written = write(fd_to, buffer, bytes_read);
+		if (bytes_written != bytes_read)
+		{
+			return (-1);
+		}
+		bytes_read = read(fd_from, buffer, 1024);
+	}
+	if (bytes_read == -1)
+	{
+		return (-1);
+	}
+	return (0);
+}
+
+/**
  * main - copies the content of one file to another
  * @argc: argument count
  * @argv: argument vector
@@ -10,11 +39,7 @@
  */
 int main(int argc, char **argv)
 {
-	int fd_from;
-	int fd_to;
-	ssize_t bytes_read;
-	ssize_t bytes_written;
-	char buffer[1024];
+	int fd_from, fd_to;
 
 	if (argc != 3)
 	{
@@ -34,25 +59,12 @@ int main(int argc, char **argv)
 		close(fd_from);
 		return (99);
 	}
-	bytes_read = read(fd_from, buffer, 1024);
-	while (bytes_read > 0)
+	if (copy_file(fd_from, fd_to) == -1)
 	{
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written != bytes_read)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(fd_from);
-			close(fd_to);
-			return (99);
-		}
-		bytes_read = read(fd_from, buffer, 1024);
-	}
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		close(fd_from);
 		close(fd_to);
-		return (98);
+		return (99);
 	}
 	if (close(fd_from) == -1)
 	{
